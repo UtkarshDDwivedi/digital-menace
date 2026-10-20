@@ -1,0 +1,102 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="320" viewBox="0 0 360 320">
+  <g fill="none" stroke="#171717" stroke-width="2.2"
+     stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Smiley face -->
+    <g transform="translate(48 44) rotate(-12)">
+      <circle r="17"/>
+      <path d="M-7 -4 L-7 -2 M7 -4 L7 -2"/>
+      <path d="M-8 5 Q0 14 9 4"/>
+    </g>
+
+    <!-- Sparkle -->
+    <path d="M130 25 Q134 40 147 43 Q134 46 130 61
+             Q126 46 113 43 Q126 40 130 25Z"/>
+
+    <!-- Lightning bolt -->
+    <path d="M220 28 L205 48 L216 48 L209 66
+             L230 41 L218 41Z"/>
+
+    <!-- Star -->
+    <path d="M305 35 L310 47 L323 48 L313 57
+             L316 70 L305 63 L294 70 L297 57
+             L287 48 L300 47Z"/>
+
+    <!-- Speech bubble -->
+    <g transform="translate(95 117) rotate(7)">
+      <path d="M-24 -14 Q-24 -20 -17 -20 H17
+               Q24 -20 24 -13 V5 Q24 12 17 12
+               H1 L-10 22 L-8 12 H-17
+               Q-24 12 -24 5Z"/>
+      <path d="M-12 -4 H12 M-12 3 H5"/>
+    </g>
+
+    <!-- Skull-like doodle -->
+    <g transform="translate(235 111) rotate(-8)">
+      <path d="M-19 -7 A19 19 0 1 1 19 -7
+               L15 7 L10 12 H-10 L-15 7Z"/>
+      <circle cx="-7" cy="-3" r="4"/>
+      <circle cx="7" cy="-3" r="4"/>
+      <path d="M0 2 L-3 7 H3Z M-8 12 V17
+               M0 12 V17 M8 12 V17"/>
+    </g>
+
+    <!-- Small stars -->
+    <path d="M165 92 L169 101 L179 103 L170 108
+             L168 118 L163 109 L153 107 L161 102Z"/>
+    <path d="M328 132 L331 139 L339 141 L332 145
+             L330 153 L326 146 L318 144 L325 140Z"/>
+
+    <!-- Flame -->
+    <g transform="translate(48 205) rotate(8)">
+      <path d="M0 -26 Q7 -13 4 -7
+               Q18 -18 17 -3
+               Q23 12 9 22
+               Q-6 32 -17 17
+               Q-27 4 -15 -10
+               Q-15 2 -8 5
+               Q-10 -10 0 -26Z"/>
+      <path d="M1 4 Q9 13 1 21 Q-8 17 1 4Z"/>
+    </g>
+
+    <!-- Wavy doodle -->
+    <path d="M105 184 Q115 170 125 184
+             T145 184 T165 184 T185 184"/>
+
+    <!-- Heart -->
+    <g transform="translate(284 211) rotate(12)">
+      <path d="M0 22 L-20 3
+               C-35 -13 -12 -26 0 -10
+               C12 -26 35 -13 20 3Z"/>
+    </g>
+
+    <!-- Sparkles -->
+    <path d="M208 177 V197 M198 187 H218"/>
+    <path d="M222 183 L225 190 L232 193
+             L225 196 L222 203 L219 196
+             L212 193 L219 190Z"/>
+
+    <!-- Ghost -->
+    <g transform="translate(128 267) rotate(-7)">
+      <path d="M-17 17 V-5 A17 17 0 0 1 17 -5
+               V17 L8 12 L0 18 L-8 12Z"/>
+      <circle cx="-6" cy="-3" r="2"/>
+      <circle cx="6" cy="-3" r="2"/>
+      <path d="M-4 6 Q0 10 4 6"/>
+    </g>
+
+    <!-- Curved arrow -->
+    <path d="M200 264 Q219 246 238 264
+             Q247 273 237 282"/>
+    <path d="M228 280 L237 282 L239 273"/>
+
+    <!-- Little doodles -->
+    <path d="M24 282 Q28 270 32 282 T40 282"/>
+    <path d="M315 257 L320 267 L330 269
+             L322 275 L324 285 L315 279
+             L306 285 L308 275 L300 269
+             L310 267Z"/>
+
+  </g>
+</svg>
