@@ -1,13 +1,14 @@
 import PlatformCarousel from "@/components/PlatformCarousel";
+import ProfileMenu from "@/components/auth/profile-menu";
 
 export default function Home() {
   return (
     <div className="grow flex flex-col">
-      <div className="flex items-baseline justify-between m-4">
-        <p className="w-[75%] text-6xl font-extrabold tracking-wide">
+      <div className="flex items-center justify-between md:justify-start md:gap-4 m-4">
+        <p className="w-[75%] md:w-fit text-6xl font-extrabold tracking-wide">
           Pick a platform
         </p>
-        <div className="h-12 w-12 rounded-xl bg-black"></div>
+        <ProfileMenu />
       </div>
       <PlatformCarousel />
     </div>
