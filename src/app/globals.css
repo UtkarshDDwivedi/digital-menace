@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "@neondatabase/auth-ui/tailwind";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -29,6 +30,12 @@ body::before {
   background-position: center;
 
   opacity: 0.1;
+}
+
+.neon-auth-ui {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 @theme inline {
