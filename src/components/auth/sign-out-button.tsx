@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth/client";
 
 export function SignOutButton() {
-  const router = useRouter();
   const [isSigningOut, setIsSigningOut] = useState(false);
 
   async function handleSignOut() {
@@ -16,8 +14,9 @@ export function SignOutButton() {
       console.error("Failed to sign out with auth server:", error);
     } finally {
       setIsSigningOut(false);
-      router.replace("/auth/sign-in");
-      router.refresh();
+      // Hard navigation to flush in-memory auth state and cookies
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+      window.location.href = "/auth/sign-in";
     }
   }
 

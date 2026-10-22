@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   ChevronDown,
   LogIn,
@@ -18,7 +17,6 @@ import { useProfileMenu } from "@/components/auth/profile-menu-context";
 const emptySubscribe = () => () => {};
 
 export default function ProfileMenu() {
-  const router = useRouter();
   const { isOpen, setIsOpen } = useProfileMenu();
   const [isSigningOut, setIsSigningOut] = useState(false);
   const mounted = useSyncExternalStore(
@@ -68,8 +66,9 @@ export default function ProfileMenu() {
     } finally {
       setIsSigningOut(false);
       setIsOpen(false);
-      router.replace("/");
-      router.refresh();
+      // Hard navigation to flush in-memory auth state and cookies
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+      window.location.href = "/";
     }
   }
 
