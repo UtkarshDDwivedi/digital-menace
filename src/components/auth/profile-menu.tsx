@@ -90,7 +90,7 @@ export default function ProfileMenu() {
         aria-label="Open profile menu"
         aria-expanded={isOpen}
         aria-haspopup="menu"
-        className="flex h-12 items-center gap-2 rounded-xl border border-neutral-200 bg-white p-1.5 text-black transition hover:bg-neutral-50"
+        className="relative z-10 flex h-12 items-center gap-2 rounded-xl border border-neutral-200 bg-white p-1.5 text-black transition hover:bg-neutral-50"
       >
         {user ? (
           user.image ? (
@@ -118,6 +118,15 @@ export default function ProfileMenu() {
           className={`mr-1 transition-transform ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
+
+      {isOpen && (
+        <button
+          type="button"
+          aria-label="Close profile menu"
+          className="hidden in-[header]:block fixed inset-0 z-[-1] cursor-default bg-black/20 backdrop-blur-[2px] animate-in fade-in duration-200"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
 
       {isOpen &&
         mounted &&
