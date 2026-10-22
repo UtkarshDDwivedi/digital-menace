@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { auth } from "@/lib/auth/server";
 import { db } from "@/db";
 import { connectedAccounts } from "@/db/schema";
+import { getYouTubeRedirectUri } from "@/lib/youtube";
 
 const STATE_COOKIE = "youtube_oauth_state";
 
@@ -52,9 +53,9 @@ export async function GET(request: Request) {
 
   const clientId = process.env.YOUTUBE_CLIENT_ID;
   const clientSecret = process.env.YOUTUBE_CLIENT_SECRET;
-  const redirectUri = process.env.YOUTUBE_REDIRECT_URI;
+  const redirectUri = getYouTubeRedirectUri(request);
 
-  if (!clientId || !clientSecret || !redirectUri) {
+  if (!clientId || !clientSecret) {
     return NextResponse.redirect(
       new URL("/youtube?error=missing_credentials", request.url),
     );

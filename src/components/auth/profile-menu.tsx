@@ -15,10 +15,10 @@ import { authClient } from "@/lib/auth/client";
 import { useProfileMenu } from "@/components/auth/profile-menu-context";
 
 export default function ProfileMenu() {
+  const router = useRouter();
   const { isOpen, setIsOpen } = useProfileMenu();
   const [isSigningOut, setIsSigningOut] = useState(false);
 
-  const router = useRouter();
   const { data: session, isPending } = authClient.useSession();
 
   const user = session?.user ?? null;
@@ -29,20 +29,14 @@ export default function ProfileMenu() {
     setIsSigningOut(true);
 
     try {
-      const { error } = await authClient.signOut();
-
-      if (error) {
-        console.error("Failed to sign out:", error);
-        return;
-      }
-
+      await authClient.signOut();
+    } catch (error) {
+      console.error("Failed to sign out with auth server:", error);
+    } finally {
+      setIsSigningOut(false);
       setIsOpen(false);
       router.replace("/");
       router.refresh();
-    } catch (error) {
-      console.error("Failed to sign out:", error);
-    } finally {
-      setIsSigningOut(false);
     }
   }
 

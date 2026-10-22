@@ -2,6 +2,7 @@ import { randomBytes } from "node:crypto";
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { auth } from "@/lib/auth/server";
+import { getYouTubeRedirectUri } from "@/lib/youtube";
 
 const STATE_COOKIE = "youtube_oauth_state";
 
@@ -15,11 +16,11 @@ export async function GET(request: Request) {
   }
 
   const clientId = process.env.YOUTUBE_CLIENT_ID;
-  const redirectUri = process.env.YOUTUBE_REDIRECT_URI;
+  const redirectUri = getYouTubeRedirectUri(request);
 
-  if (!clientId || !redirectUri) {
+  if (!clientId) {
     return NextResponse.json(
-      { error: "YouTube OAuth environment variables are missing." },
+      { error: "YOUTUBE_CLIENT_ID environment variable is missing." },
       { status: 500 },
     );
   }
