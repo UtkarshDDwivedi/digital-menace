@@ -15,7 +15,7 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="grow flex flex-col min-h-screen">
       {/* Sticky Top Header */}
-      <header className="sticky top-0 z-40 flex items-center justify-between px-4 py-3 md:px-8 bg-background/85 backdrop-blur-md border-b border-black/10 shadow-sm transition-all">
+      <header className="sticky top-0 z-50 flex items-center justify-between px-4 py-3 md:px-8 bg-background/85 backdrop-blur-md border-b border-black/10 shadow-sm transition-all">
         <Link
           href="/"
           className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-4 py-2 text-sm font-bold shadow-[2px_2px_0px_#171717] transition hover:bg-neutral-50 active:translate-y-0.5"

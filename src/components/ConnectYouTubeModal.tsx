@@ -38,7 +38,7 @@ export default function ConnectYouTubeModal({
           onClose();
         }
       }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
     >
       <div className="relative w-full max-w-md overflow-hidden rounded-[2rem] border-2 border-black bg-white p-6 sm:p-8 shadow-[8px_8px_0px_#171717] animate-in zoom-in-95 duration-200">
         {/* Close Button */}

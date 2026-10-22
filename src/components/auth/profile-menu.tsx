@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -14,10 +15,42 @@ import {
 import { authClient } from "@/lib/auth/client";
 import { useProfileMenu } from "@/components/auth/profile-menu-context";
 
+const emptySubscribe = () => () => {};
+
 export default function ProfileMenu() {
   const router = useRouter();
   const { isOpen, setIsOpen } = useProfileMenu();
   const [isSigningOut, setIsSigningOut] = useState(false);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, setIsOpen]);
 
   const { data: session, isPending } = authClient.useSession();
 
@@ -50,7 +83,7 @@ export default function ProfileMenu() {
   }
 
   return (
-    <div className="relative z-50">
+    <div ref={menuRef} className="relative z-50">
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
@@ -86,19 +119,23 @@ export default function ProfileMenu() {
         />
       </button>
 
-      {isOpen && (
-        <>
+      {isOpen &&
+        mounted &&
+        createPortal(
           <button
             type="button"
             aria-label="Close profile menu"
-            className="fixed inset-0 z-[-1] cursor-default bg-black/10 backdrop-blur-[2px] animate-in fade-in duration-200"
+            className="fixed inset-0 z-40 cursor-default bg-black/20 backdrop-blur-[2px] animate-in fade-in duration-200"
             onClick={() => setIsOpen(false)}
-          />
+          />,
+          document.body
+        )}
 
-          <div
-            role="menu"
-            className="absolute right-0 z-50 mt-2 w-64 overflow-hidden rounded-xl border border-neutral-200 bg-white p-2 text-black shadow-lg"
-          >
+      {isOpen && (
+        <div
+          role="menu"
+          className="absolute right-0 z-50 mt-2 w-64 overflow-hidden rounded-xl border border-neutral-200 bg-white p-2 text-black shadow-lg"
+        >
             {user ? (
               <>
                 <div className="border-b border-neutral-100 px-3 py-3">
@@ -170,8 +207,7 @@ export default function ProfileMenu() {
               </>
             )}
           </div>
-        </>
-      )}
+        )}
     </div>
   );
 }

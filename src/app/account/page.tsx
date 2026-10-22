@@ -10,6 +10,7 @@ import { db } from "@/db";
 import { connectedAccounts } from "@/db/schema";
 import { SignOutButton } from "@/components/auth/sign-out-button";
 import DisconnectYouTubeButton from "@/components/DisconnectYouTubeButton";
+import ProfileMenu from "@/components/auth/profile-menu";
 
 async function AccountContent() {
   const { data: session } = await auth.getSession();
@@ -31,7 +32,8 @@ async function AccountContent() {
 
   return (
     <div className="grow flex flex-col min-h-screen">
-      <header className="flex items-center justify-between m-4 md:mx-8">
+      {/* Sticky Top Header */}
+      <header className="sticky top-0 z-50 flex items-center justify-between px-4 py-3 md:px-8 bg-background/85 backdrop-blur-md border-b border-black/10 shadow-sm transition-all">
         <Link
           href="/"
           className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-white px-4 py-2 text-sm font-bold shadow-[2px_2px_0px_#171717] transition hover:bg-neutral-50 active:translate-y-0.5"
@@ -39,6 +41,7 @@ async function AccountContent() {
           <ArrowLeft size={16} />
           <span>Platforms</span>
         </Link>
+        <ProfileMenu />
       </header>
 
       <main className="mx-auto w-full max-w-2xl p-4 sm:p-6 pb-16">
