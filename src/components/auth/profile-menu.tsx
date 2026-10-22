@@ -12,9 +12,10 @@ import {
 } from "lucide-react";
 
 import { authClient } from "@/lib/auth/client";
+import { useProfileMenu } from "@/components/auth/profile-menu-context";
 
 export default function ProfileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, setIsOpen } = useProfileMenu();
   const [isSigningOut, setIsSigningOut] = useState(false);
 
   const router = useRouter();
@@ -55,7 +56,7 @@ export default function ProfileMenu() {
   }
 
   return (
-    <div className="relative">
+    <div className="relative z-50">
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
@@ -96,7 +97,7 @@ export default function ProfileMenu() {
           <button
             type="button"
             aria-label="Close profile menu"
-            className="fixed inset-0 z-40 cursor-default"
+            className="fixed inset-0 z-[-1] cursor-default bg-black/10 backdrop-blur-[2px] animate-in fade-in duration-200"
             onClick={() => setIsOpen(false)}
           />
 
@@ -144,10 +145,10 @@ export default function ProfileMenu() {
               <>
                 <div className="px-3 py-3">
                   <p className="text-sm font-semibold">
-                    Welcome to Digital Menace
+                    You are not signed in!
                   </p>
                   <p className="mt-1 text-xs text-neutral-500">
-                    Sign in to save your roasts and view your history.
+                    Sign in or create account to continue using.
                   </p>
                 </div>
 

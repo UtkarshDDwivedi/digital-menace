@@ -4,6 +4,7 @@ import { NeonAuthUIProvider } from "@neondatabase/auth-ui";
 import { authClient } from "@/lib/auth/client";
 import type { ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import { ProfileMenuProvider } from "@/components/auth/profile-menu-context";
 
 export function Providers({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -19,7 +20,7 @@ export function Providers({ children }: { children: ReactNode }) {
         providers: ["google"],
       }}
     >
-      {children}
+      <ProfileMenuProvider>{children}</ProfileMenuProvider>
     </NeonAuthUIProvider>
   );
 }
