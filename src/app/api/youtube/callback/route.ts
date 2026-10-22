@@ -54,6 +54,7 @@ export async function GET(request: Request) {
   const clientId = process.env.YOUTUBE_CLIENT_ID;
   const clientSecret = process.env.YOUTUBE_CLIENT_SECRET;
   const redirectUri = getYouTubeRedirectUri(request);
+  console.log("[YouTube OAuth Callback] Using redirectUri:", redirectUri);
 
   if (!clientId || !clientSecret) {
     return NextResponse.redirect(

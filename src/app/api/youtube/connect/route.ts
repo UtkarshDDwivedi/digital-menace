@@ -17,6 +17,7 @@ export async function GET(request: Request) {
 
   const clientId = process.env.YOUTUBE_CLIENT_ID;
   const redirectUri = getYouTubeRedirectUri(request);
+  console.log("[YouTube OAuth Connect] Using redirectUri:", redirectUri);
 
   if (!clientId) {
     return NextResponse.json(
